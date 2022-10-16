@@ -2,16 +2,12 @@
 
 namespace RestaurantOrderingDemoApi.Models
 {
-    public class Menu
+    public class Combo
     {
-        public int MenuId { get; set; }
+        public int ComboId { get; set; }
         [Required]
         [StringLength(100)]
         public string Name { get; set; }
-        public bool AvailableOnWeekdays { get; set; }
-        public bool AvailableOnHolidays { get; set; }
-
         public ICollection<Item> Items { get; set; }
-        public ICollection<Combo> Combos { get; set; }
     }
 }

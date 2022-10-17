@@ -9,5 +9,6 @@ namespace RestaurantOrderingDemoApi.Models
         [StringLength(100)]
         public string Name { get; set; }
         public ICollection<Item> Items { get; set; }
+        public ICollection<Menu> Menus { get; set; }
     }
 }

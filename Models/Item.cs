@@ -16,4 +16,6 @@ public class Item
     public string Name { get; set; }
     public ItemType Type { get; set; }
     public Category Category { get; set; }
+    public ICollection<Combo> Combos { get; set; }
+    public ICollection<Menu> Menus { get; set; }
 }

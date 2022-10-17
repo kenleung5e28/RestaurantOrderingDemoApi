@@ -7,10 +7,12 @@ namespace RestaurantOrderingDemoApi.Controllers;
 [Route("[controller]")]
 public class MenuController : ControllerBase
 {
+    private readonly RestaurantContext _restaurantContext;
     private readonly ILogger<MenuController> _logger;
 
-    public MenuController(ILogger<MenuController> logger)
+    public MenuController(RestaurantContext restaurantContext, ILogger<MenuController> logger)
     {
+        _restaurantContext = restaurantContext;
         _logger = logger;
     }
 
@@ -24,7 +26,7 @@ public class MenuController : ControllerBase
     [HttpGet]
     public MenuDto? Get(int menuId)
     {
-        using var context = new RestaurantContext();
+        var context = _restaurantContext;
         return context.Menus
             .Where(menu => menu.MenuId == menuId)
             .Select(menu => new MenuDto

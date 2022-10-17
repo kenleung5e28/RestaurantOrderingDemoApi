@@ -34,9 +34,9 @@ namespace RestaurantOrderingDemoApi.Models
                     new { MenusMenuId = -1, ItemsItemId = -2 }));
         }
 
-        public DbSet<Category> Categories { get; set; }
-        public DbSet<Item> Items { get; set; }
-        public DbSet<Combo> Combos { get; set; }
-        public DbSet<Menu> Menus { get; set; }
+        public DbSet<Category> Categories => Set<Category>();
+        public DbSet<Item> Items => Set<Item>();
+        public DbSet<Combo> Combos => Set<Combo>();
+        public DbSet<Menu> Menus => Set<Menu>();
     }
 }

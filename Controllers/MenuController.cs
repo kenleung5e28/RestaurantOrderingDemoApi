@@ -18,16 +18,15 @@ public class MenuController : ControllerBase
 
     public record MenuDto
     {
-        public string Name { get; set; }
-        public List<Item>? Items { get; set; }
-        public List<Combo>? Combos { get; set; }
+        public string Name { get; set; } = String.Empty;
+        public List<Item> Items { get; set; } = new List<Item>();
+        public List<Combo> Combos { get; set; } = new List<Combo>();
     }
 
     [HttpGet]
     public MenuDto? Get(int menuId)
     {
-        var context = _restaurantContext;
-        return context.Menus
+        return _restaurantContext.Menus
             .Where(menu => menu.MenuId == menuId)
             .Select(menu => new MenuDto
             {

@@ -1,5 +1,4 @@
 using Microsoft.AspNetCore.Mvc;
-using RestaurantOrderingDemoApi.Models;
 using RestaurantOrderingDemoApi.Services;
 
 namespace RestaurantOrderingDemoApi.Controllers;
@@ -9,18 +8,17 @@ namespace RestaurantOrderingDemoApi.Controllers;
 public class MenuController : ControllerBase
 {
     private readonly ILogger<MenuController> _logger;
-    private readonly RestaurantContext _context;
+    private readonly MenuService _menuService;
 
-    public MenuController(RestaurantContext context, ILogger<MenuController> logger)
+    public MenuController(MenuService menuService, ILogger<MenuController> logger)
     {
         _logger = logger;
-        _context = context;
+        _menuService = menuService;
     }
 
     [HttpGet]
     public MenuDto? Get(int menuId)
     {
-        var menuService = new MenuService(_context);
-        return menuService.GetMenu(menuId);
+        return _menuService.GetMenu(menuId);
     }
 }

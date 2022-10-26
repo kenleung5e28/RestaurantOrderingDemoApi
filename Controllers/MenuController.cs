@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using RestaurantOrderingDemoApi.Models;
+using RestaurantOrderingDemoApi.Services;
 
 namespace RestaurantOrderingDemoApi.Controllers;
 
@@ -7,32 +8,19 @@ namespace RestaurantOrderingDemoApi.Controllers;
 [Route("[controller]")]
 public class MenuController : ControllerBase
 {
-    private readonly RestaurantContext _restaurantContext;
     private readonly ILogger<MenuController> _logger;
+    private readonly RestaurantContext _context;
 
-    public MenuController(RestaurantContext restaurantContext, ILogger<MenuController> logger)
+    public MenuController(RestaurantContext context, ILogger<MenuController> logger)
     {
-        _restaurantContext = restaurantContext;
         _logger = logger;
-    }
-
-    public record MenuDto
-    {
-        public string Name { get; set; } = String.Empty;
-        public List<Item> Items { get; set; } = new List<Item>();
-        public List<Combo> Combos { get; set; } = new List<Combo>();
+        _context = context;
     }
 
     [HttpGet]
     public MenuDto? Get(int menuId)
     {
-        return _restaurantContext.Menus
-            .Where(menu => menu.MenuId == menuId)
-            .Select(menu => new MenuDto
-            {
-                Name = menu.Name,
-                Items = menu.Items.ToList(),
-                Combos = menu.Combos.ToList(),
-            }).FirstOrDefault();
+        var menuService = new MenuService(_context);
+        return menuService.GetMenu(menuId);
     }
 }

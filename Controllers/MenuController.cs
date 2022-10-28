@@ -17,7 +17,7 @@ public class MenuController : ControllerBase
     }
 
     [HttpGet]
-    public MenuDto? Get(int menuId)
+    public GetMenuDto? Get(int menuId)
     {
         return _menuService.GetMenu(menuId);
     }

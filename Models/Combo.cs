@@ -7,7 +7,7 @@ namespace RestaurantOrderingDemoApi.Models
         public int ComboId { get; set; }
         [Required]
         [StringLength(100)]
-        public string Name { get; set; } = String.Empty;
+        public string Name { get; set; } = string.Empty;
         public ICollection<Item> Items { get; set; } = new List<Item>();
         public ICollection<Menu> Menus { get; set; } = new List<Menu>();
     }

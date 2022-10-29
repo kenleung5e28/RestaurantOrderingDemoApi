@@ -13,7 +13,7 @@ public class Item
     public int ItemId { get; set; }
     [Required]
     [StringLength(100)]
-    public string Name { get; set; } = String.Empty;
+    public string Name { get; set; } = string.Empty;
     public ItemType Type { get; set; }
     public Category Category { get; set; }
     public ICollection<Combo> Combos { get; set; } = new List<Combo>();

@@ -7,7 +7,7 @@ namespace RestaurantOrderingDemoApi.Models
         public int MenuId { get; set; }
         [Required]
         [StringLength(100)]
-        public string Name { get; set; } = String.Empty;
+        public string Name { get; set; } = string.Empty;
         public bool AvailableOnWeekdays { get; set; }
         public bool AvailableOnHolidays { get; set; }
 

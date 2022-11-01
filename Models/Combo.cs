@@ -8,6 +8,7 @@ namespace RestaurantOrderingDemoApi.Models
         [Required]
         [StringLength(100)]
         public string Name { get; set; } = string.Empty;
+        [Required]
         public decimal Price { get; set; }
         public ICollection<Item> Items { get; set; } = new List<Item>();
         public ICollection<Menu> Menus { get; set; } = new List<Menu>();

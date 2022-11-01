@@ -22,12 +22,14 @@ namespace RestaurantOrderingDemoApi.Services
                 {
                     ItemId = item.ItemId,
                     Name = item.Name,
-                    Type = item.Type.ToString()
+                    Type = item.Type.ToString(),
+                    ActualPrice = item.Price
                 }).ToList(),
                 Combos = menu.Combos.Select(combo => new GetMenuComboDto
                 {
                     ComboId = combo.ComboId,
-                    Name = combo.Name
+                    Name = combo.Name,
+                    ActualPrice = combo.Price
                 }).ToList()
             }).FirstOrDefault();
         }

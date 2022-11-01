@@ -14,11 +14,13 @@ namespace RestaurantOrderingDemoApi.Services
         public int ItemId { get; set; }
         public string Name { get; set; } = string.Empty;
         public string Type { get; set; } = string.Empty;
+        public decimal ActualPrice { get; set; }
     }
     
     public class GetMenuComboDto
     {
         public int ComboId { get; set; }
         public string Name { get; set; } = string.Empty;
+        public decimal ActualPrice { get; set; }
     }
 }
